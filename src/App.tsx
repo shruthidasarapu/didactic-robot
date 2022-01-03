@@ -38,45 +38,23 @@ const App: React.FC<AppPropType> = ({
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <div>{todo}</div>
-
               <div>
-                {/* <input key = {index}  type = "checkbox" onChange = {() =>
-									type === "Todo" ? markDoing(todo) : "Doing" ? markDone(todo) : markTodo(todo)
-									
-								}></input>	 */}
-                {type === "Todo" && (
-                  <span
-                    onClick={() => {
-                      markDoing(todo);
-                    }}
-                  >
-                    {" "}
-                    check{" "}
-                  </span>
-                )}
-                {type === "Doing" && (
-                  <span
-                    onClick={() => {
-                      markDone(todo);
-                    }}
-                  >
-                    {" "}
-                    check{" "}
-                  </span>
-                )}
-
-                {type === "Done" && (
-                  <span
-                    onClick={() => {
-                      markTodo(todo);
-                    }}
-                  >
-                    {" "}
-                    check{" "}
-                  </span>
-                )}
-
-                <span onClick={() => deleteTodo(todo)}> X </span>
+                <i
+                  className={`fas fa-${
+                    type === "Done" ? "check" : "minus"
+                  } m-2`}
+                  onClick={() => {
+                    type === "Todo"
+                      ? markDoing(todo)
+                      : "Doing"
+                      ? markDone(todo)
+                      : markTodo(todo);
+                  }}
+                ></i>
+                <i
+                  className={`fas fa-trash m-2`}
+                  onClick={() => deleteTodo(todo)}
+                ></i>
               </div>
             </ListGroupItem>
           );

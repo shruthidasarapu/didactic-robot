@@ -1,4 +1,9 @@
-import {markTodoAction, markDoingAction, markDoneAction,deleteTodoAction} from './actionsType';
+import {
+  markTodoAction,
+  markDoingAction,
+  markDoneAction,
+  deleteTodoAction,
+} from "./actionsType";
 
 export type markTodoActionCreator = (todo: string) => markTodoAction;
 
