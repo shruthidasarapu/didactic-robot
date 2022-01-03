@@ -81,20 +81,7 @@ const App: React.FC<AppPropType> = ({
 			markTodo(val);    
 		}
 	};
-	// type ListItems = {
-	// 	text?: string;
-	// 	date: number;
-	// 	time: number;
-	// }
-	// const addTodo = (e: any) => {
-	// const data= e.target;
-    //  const newTodo: ListItems [] = [{
-    //  text: data.text.value,
-    //  date: data.date.value,
-	//  time: data.time.value,
-    // }]
-	// markTodo(newTodo.data.text.value);
-	// }
+
 
 	return (
 		<Container>
