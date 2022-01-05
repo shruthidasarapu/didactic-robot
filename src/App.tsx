@@ -25,7 +25,7 @@ const App: React.FC<AppPropType> = ({
   const input = useRef<HTMLInputElement>(null);
 
   const renderList = (type: "Todo" | "Doing" | "Done") => {
-    const looper = type === "Todo" ? todo : "Doing" ? doing : done;
+    const looper = type === "Todo" ? todo : type === "Doing" ? doing : done;
 
     return (
       <ListGroup variant="flush" className="m-2">
@@ -41,12 +41,16 @@ const App: React.FC<AppPropType> = ({
               <div>
                 <i
                   className={`fas fa-${
-                    type === "Done" ? "check" : "minus"
+                    type === "Done"
+                      ? "check"
+                      : type === "Doing"
+                      ? "plus"
+                      : "minus"
                   } m-2`}
                   onClick={() => {
                     type === "Todo"
                       ? markDoing(todo)
-                      : "Doing"
+                      : type === "Doing"
                       ? markDone(todo)
                       : markTodo(todo);
                   }}
