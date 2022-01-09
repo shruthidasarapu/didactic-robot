@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-
+import React, { useState, useRef } from "react";
 import {
   Container,
   ListGroup,
@@ -12,6 +11,7 @@ import { connect } from "react-redux";
 import { deleteTodo, markDoing, markDone, markTodo } from "./action";
 import storeTypes from "./types/storeTypes";
 import AppPropType from "./AppPropType";
+import moment from "moment";
 
 const App: React.FC<AppPropType> = ({
   todo,
@@ -23,6 +23,9 @@ const App: React.FC<AppPropType> = ({
   markDone,
 }) => {
   const input = useRef<HTMLInputElement>(null);
+  const [deadline, setDeadline] = useState<string>(
+    moment(new Date()).format("YYYY-MM-DD")
+  );
 
   const renderList = (type: "Todo" | "Doing" | "Done") => {
     const looper = type === "Todo" ? todo : type === "Doing" ? doing : done;
@@ -79,6 +82,16 @@ const App: React.FC<AppPropType> = ({
     <Container>
       <InputGroup className="m-3">
         <FormControl placeholder="Todo" ref={input} />
+        <span>
+          <InputGroup>
+            <FormControl
+              type="date"
+              placeholder="deadline(optional)"
+              value={deadline}
+              onChange={() => setDeadline("")}
+            />
+          </InputGroup>
+        </span>
         <span>
           <InputGroup>
             <Button variant="secondary" onClick={() => addTodo()}>
